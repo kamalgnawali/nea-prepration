@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ note.title }}{% endblock %}
+
+{% block content %}
+    <h2 class="mb-3">{{ note.title }}</h2>
+    <p class="text-muted small">विषय: {{ note.topic.subject.name }} | टपिक: {{ note.topic.name }}</p>
+    <hr>
+    
+    {# नोटको सामग्रीलाई कार्ड भित्र राख्ने #}
+    <div class="card p-4 mb-4 shadow-sm"> {# card, p-4 (padding), mb-4 (margin-bottom), shadow-sm (हल्का छाया) #}
+        <div class="card-body"> {# कार्डको मुख्य भाग #}
+            {# यदि नोटको content मा HTML ट्यागहरू छन् भने |safe फिल्टर प्रयोग गर्नुपर्छ #}
+            {# यदि content Plain Text हो भने, |linebreaksbr ले नयाँ लाइनलाई <br> मा बदल्छ #}
+            {{ note.content|linebreaksbr }} 
+            {# यदि तपाईंले नोटमा image वा अन्य media राख्नुभएको छ भने, त्यसलाई पनि यहाँ देखाउन सकिन्छ #}
+        </div>
+    </div>
+
+    <p><a href="{% url 'notes:topic_list' subject_slug=note.topic.subject.slug %}" class="btn btn-secondary">टपिकहरूमा फर्कनुहोस्</a></p>
+{% endblock %}

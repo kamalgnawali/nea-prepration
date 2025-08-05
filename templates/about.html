@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}हाम्रो बारेमा{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="bg-light rounded-4 p-5 shadow-sm text-center mb-5">
+        <h1 class="display-5 fw-bold">हाम्रो बारेमा</h1>
+        <p class="lead mt-3">Welcome to <strong>NEA Preparation Platform</strong>.</p>
+        <hr class="my-4">
+        <p class="mb-4">
+            यो प्लेटफर्म नेपाल विद्युत प्राधिकरण (NEA) लगायत विभिन्न सरकारी सेवाका लागि तयारी गरिरहेका विद्यार्थीहरूलाई लक्षित गरी बनाइएको हो। 
+            हामी यहाँ तपाईंलाई निम्न कुराहरू प्रदान गर्दछौं:
+        </p>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <ul class="list-group list-group-flush text-start">
+                    <li class="list-group-item"><i class="fas fa-book-open me-2 text-primary"></i> व्यवस्थित विषयगत नोटहरू</li>
+                    <li class="list-group-item"><i class="fas fa-brain me-2 text-success"></i> ज्ञान परीक्षणका लागि क्विजहरू</li>
+                    <li class="list-group-item"><i class="fas fa-file-alt me-2 text-info"></i> विस्तृत पाठ्यक्रम</li>
+                    <li class="list-group-item"><i class="fas fa-ellipsis-h me-2 text-muted"></i> र थप धेरै...</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="mt-4">हाम्रो लक्ष्य तपाईंको तयारीलाई अझ प्रभावकारी र सहज बनाउनु हो।</p>
+        <a class="btn btn-primary btn-lg mt-3 px-4" href="{% url 'home' %}">
+            <i class="fas fa-arrow-left me-1"></i> गृह पृष्ठमा फर्कनुहोस्
+        </a>
+    </div>
+
+    <div class="row gy-4">
+        <!-- Mission Section -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title"><i class="fas fa-bullseye me-2 text-primary"></i> हाम्रो मिसन</h4>
+                    <p class="card-text">उच्च गुणस्तरीय शैक्षिक सामग्रीहरू उपलब्ध गराएर विद्यार्थीहरूलाई उनीहरूको लक्ष्य हासिल गर्न सशक्त बनाउनु।</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form Section -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title"><i class="fas fa-envelope me-2 text-success"></i> हामीलाई सम्पर्क गर्नुहोस्</h4>
+                    <p class="card-text">यदि तपाईंसँग कुनै प्रश्न वा सुझावहरू छन् भने, कृपया हामीलाई सम्पर्क गर्नुहोस्।</p>
+                    <p><strong>इमेल:</strong> <a href="mailto:kamalgyawali8888@gmail.com">kamalgyawali8888@gmail.com</a></p>
+
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {% if messages %}
+                          {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                              {{ message }}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                          {% endfor %}
+                        {% endif %}
+
+                        {{ form.non_field_errors }}
+                        <div class="mb-3">
+                          {{ form.name.label_tag }} {{ form.name }}
+                          {{ form.name.errors }}
+                        </div>
+                        <div class="mb-3">
+                          {{ form.email.label_tag }} {{ form.email }}
+                          {{ form.email.errors }}
+                        </div>
+                        <div class="mb-3">
+                          {{ form.message.label_tag }} {{ form.message }}
+                          {{ form.message.errors }}
+                        </div>
+                        <button type="submit" class="btn btn-success">पठाउनुहोस्</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

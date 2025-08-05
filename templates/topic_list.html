@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ subject.name }} का टपिकहरू{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4 text-center">📚 {{ subject.name }} का टपिकहरू</h2>
+    <p class="lead text-center mb-5">तल दिइएका टपिकहरूबाट आफूलाई चाहिएको नोट चयन गर्नुहोस्।</p>
+
+    {% if topics %}
+        <div class="list-group shadow-sm"> {# List group मा shadow-sm थपिएको #}
+            {% for topic in topics %}
+                {# प्रत्येक टपिकलाई list-group-item-action संग आकर्षक लिंक बनाउने #}
+                <a href="{% url 'notes:note_detail' subject_slug=subject.slug topic_slug=topic.slug note_slug=topic.notes.first.slug %}"
+                   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="mb-1 text-primary">{{ topic.name }}</h5> {# टपिकको नामलाई प्राथमिक रङ #}
+                        {# यदि Topic मा सानो विवरण फिल्ड छ भने यहाँ राख्न सकिन्छ #}
+                        {# <small class="text-muted">यो टपिकको संक्षिप्त परिचय।</small> #}
+                    </div>
+                    <i class="fas fa-arrow-right text-muted"></i> {# दायाँ एरो आइकन #}
+                </a>
+            {% empty %}
+                <div class="list-group-item">
+                    <p class="alert alert-info text-center mb-0">यस विषयमा कुनै टपिकहरू उपलब्ध छैनन्।</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="alert alert-warning text-center">यस विषयमा कुनै टपिकहरू उपलब्ध छैनन्।</p>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="{% url 'notes:subject_list' %}" class="btn btn-secondary btn-lg">
+            <i class="fas fa-undo me-2"></i> विषयहरूमा फर्कनुहोस्
+        </a>
+    </div>
+{% endblock %}

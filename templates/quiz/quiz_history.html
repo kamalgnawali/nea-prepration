@@ -1,0 +1,20 @@
+<h2>Your Quiz History</h2>
+
+{% if attempts %}
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Score</th>
+      <th>Date</th>
+    </tr>
+    {% for attempt in attempts %}
+      <tr>
+        <td>{{ attempt.category.name }}</td>
+        <td>{{ attempt.score }}/{{ attempt.total_questions }}</td>
+        <td>{{ attempt.date_taken }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p>No quiz attempt yet.</p>
+{% endif %}

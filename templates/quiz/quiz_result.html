@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}क्विज नतिजा{% endblock %}
+
+{% block content %}
+    <div class="card shadow-lg mb-4 text-center">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">🎉 क्विज समाप्त भयो!</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title mb-3">{{ category.name }} क्विज</h4>
+            <p class="card-text fs-5">तपाईंले **{{ total_questions }}** मध्ये **{{ correct_count }}** प्रश्नको सही जवाफ दिनुभयो।</p>
+            
+            {% if correct_count == total_questions %}
+                <p class="alert alert-success mt-4">उत्कृष्ट! तपाईंले सबै प्रश्नको सही जवाफ दिनुभयो!</p>
+            {# यहाँ 'total_questions|div:2' को सट्टा 'half_total_questions' प्रयोग गरिएको छ #}
+            {% elif correct_count >= half_total_questions %} 
+                <p class="alert alert-info mt-4">राम्रो प्रयास! तपाईंको प्रदर्शन सन्तोषजनक छ।</p>
+            {% else %}
+                <p class="alert alert-warning mt-4">अझै धेरै अभ्यास आवश्यक छ। निराश नहुनुहोस्, फेरि प्रयास गर्नुहोस्!</p>
+            {% endif %}
+
+            <div class="d-grid gap-2 mt-4">
+                <a href="{% url 'quiz:quiz_by_category' category_slug=category.slug %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-redo-alt me-2"></i> क्विज फेरि सुरु गर्नुहोस्
+                </a>
+                <a href="{% url 'quiz:quiz_list' %}" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-list me-2"></i> सबै क्विजहरू हेर्नुहोस्
+                </a>
+            </div>
+            <p class="lead">अन्तिम स्कोर: {{ correct_count }} / {{ total_questions }}</p>
+<p class="text-success">प्रतिशत: {{ score_percent }}%</p>
+<a href="{% url 'quiz:quiz_list' %}" class="btn btn-primary mt-3">पुन: क्विज सुरु गर्नुहोस्</a>
+
+        </div>
+    </div>
+{% endblock %}

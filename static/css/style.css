@@ -1,0 +1,128 @@
+
+    /* ========== General Styles ========== */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #82f14a;
+    color: #212529;
+}
+.navbar-nav .nav-link:hover {
+    color: #f8bc0a !important;
+}
+
+/* ========== Carousel Styles ========== */
+.carousel-item {
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.55); /* Dark transparent background */
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+}
+
+.carousel-caption h1, .carousel-caption p {
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
+}
+
+/* ========== Button Styles ========== */
+.btn-gradient {
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    color: white;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-gradient:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.5);
+    color: white;
+}
+
+/* Primary, success, info buttons hover effect */
+.btn-primary:hover, .btn-success:hover, .btn-info:hover {
+    transform: scale(1.05);
+}
+
+/* ========== Feature Card Styles ========== */
+.card {
+    transition: all 0.3s ease;
+    border-radius: 16px;
+}
+
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Icons Styling */
+.card-body i {
+    transition: transform 0.3s ease;
+}
+
+.card:hover i {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* ========== Announcements ========== */
+.list-group-item h6 {
+    font-weight: bold;
+    color: #333;
+}
+
+.list-group-item p {
+    font-size: 0.9rem;
+}
+
+/* Collapsible Details (Optional Enhancement) */
+details {
+    margin-bottom: 1rem;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+details summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ========== Contact Section ========== */
+.bg-light.rounded-3 {
+    background: linear-gradient(to right, #e9f1ff, #f4faff);
+}
+
+/* ========== Footer ========== */
+footer {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    margin-top: 5rem;
+}
+.footer p, .footer .social-icons {
+    margin-bottom: 0.1rem;
+}
+
+.footer .social-icons a:hover {
+    color: #ffc107;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+/* ========== Scroll Animations (if using AOS) ========== */
+[data-aos] {
+    opacity: 0;
+    transition-property: transform, opacity;
+    transition-duration: 1s;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}

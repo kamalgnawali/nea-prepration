@@ -1,0 +1,14 @@
+<h2>Welcome {{ user.username }}</h2>
+<h4>Your Quiz History:</h4>
+<table>
+  <tr>
+    <th>Quiz</th><th>Score</th><th>Date</th>
+  </tr>
+  {% for result in results %}
+  <tr>
+    <td>{{ result.quiz.title }}</td>
+    <td>{{ result.score }}</td>
+    <td>{{ result.taken_at }}</td>
+  </tr>
+  {% endfor %}
+</table>

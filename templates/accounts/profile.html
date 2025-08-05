@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ request.user.username }}'s Profile</h2>
+
+{% if profile.profile_pic %}
+  <img src="{{ profile.profile_pic.url }}" width="100" height="100" alt="Profile Pic">
+{% else %}
+  <p><em>No profile picture uploaded.</em></p>
+{% endif %}
+
+<p><strong>Email:</strong> {{ request.user.email }}</p>
+<p><strong>Bio:</strong> {{ profile.bio }}</p>
+<p><strong>Joined at:</strong> {{ profile.joined_at }}</p>
+
+<a href="{% url 'edit_profile' %}">Edit Profile</a>
+<!-- templates/accounts/profile.html -->
+<a href="{% url 'quiz_history' %}">📊 View Quiz History</a>
+
+{% endblock %}

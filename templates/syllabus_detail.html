@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ faculty.name }} सिलेबस{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4">📖 {{ faculty.name }} सिलेबसहरू</h2>
+
+    {% if syllabus_files %}
+        <div class="list-group shadow-sm">
+            {% for syllabus in syllabus_files %}
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-file-pdf text-danger me-2"></i>
+                        <strong>{{ syllabus.title }}</strong><br>
+                        <small class="text-muted">अपलोड मिति: {{ syllabus.uploaded_at|date:"Y M d" }}</small>
+                    </div>
+                    <div class="btn-group btn-group-sm">
+                        <a href="{{ syllabus.file.url }}" target="_blank" class="btn btn-outline-primary">
+                            <i class="fas fa-eye me-1"></i> View
+                        </a>
+                        <a href="{{ syllabus.file.url }}" download class="btn btn-outline-success">
+                            <i class="fas fa-download me-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            अहिले कुनै सिलेबस फाइल उपलब्ध छैन।
+        </div>
+    {% endif %}
+
+    <div class="mt-4">
+        <a href="{% url 'syllabus:faculty_list' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-1"></i> संकायहरूमा फर्कनुहोस्
+        </a>
+    </div>
+</div>
+{% endblock %}

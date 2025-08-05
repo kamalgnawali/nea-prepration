@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}गृह पृष्ठ{% endblock %}
+
+{% block content %}
+<div class="col" data-aos="fade-up">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'image/nea.jpg' %}" class="d-block w-100" alt="NEA Preparation Banner">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4 fw-bold">नेपाल विद्युत प्राधिकरण तयारी</h1>
+                    <p class="lead">तपाईंको NEA परीक्षाको लागि विस्तृत नोटहरू यहाँ फेला पार्नुहोस्।</p>
+                    <a href="{% url 'notes:subject_list' %}" class="btn btn-primary btn-lg">नोटहरू हेर्नुहोस्</a>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="{% static 'image/slider2.jpg' %}" class="d-block w-100" alt="Practice Quiz Slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4 fw-bold">आफ्नो ज्ञान परीक्षण गर्नुहोस्</h1>
+                    <p class="lead">अभ्यास क्विजहरू खेलेर आफ्नो तयारीलाई बलियो बनाउनुहोस्।</p>
+                    <a href="{% url 'quiz:quiz_list' %}" class="btn btn-success btn-lg">क्विज सुरु गर्नुहोस्</a>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="{% static 'image/slider3.jpg' %}" class="d-block w-100" alt="Updated Syllabus Slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4 fw-bold">नवीनतम पाठ्यक्रमहरू</h1>
+                    <p class="lead">विभिन्न संकायका लागि अद्यावधिक पाठ्यक्रमहरू हेर्नुहोस्।</p>
+                    <a href="{% url 'syllabus:faculty_list' %}" class="btn btn-info btn-lg">सिलेबस हेर्नुहोस्</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container my-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <div class="col" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center d-flex flex-column">
+                    <i class="fas fa-book-open fa-4x text-primary mb-3"></i>
+                    <h5 class="card-title">📚 विस्तृत नोटहरू</h5>
+                    <p class="card-text">विभिन्न विषयहरूमा आधारित व्यवस्थित र बुझ्न सजिलो नोटहरू प्राप्त गर्नुहोस्।</p>
+                    <a href="{% url 'notes:subject_list' %}" class="btn btn-primary mt-auto">नोटहरू हेर्नुहोस्</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center d-flex flex-column">
+                    <i class="fas fa-brain fa-4x text-success mb-3"></i>
+                    <h5 class="card-title">🧠 अभ्यास क्विजहरू</h5>
+                    <p class="card-text">आफ्नो ज्ञान परीक्षण गर्न र तयारीलाई अझ बलियो बनाउन क्विजहरू खेल्नुहोस्।</p>
+                    <a href="{% url 'quiz:quiz_list' %}" class="btn btn-success mt-auto">क्विज खेल्नुहोस्</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center d-flex flex-column">
+                    <i class="fas fa-clipboard-list fa-4x text-info mb-3"></i>
+                    <h5 class="card-title">📋 विस्तृत पाठ्यक्रम</h5>
+                    <p class="card-text">विभिन्न इन्जिनियरिङ संकायका लागि अद्यावधिक र विस्तृत पाठ्यक्रमहरू हेर्नुहोस्।</p>
+                    <a href="{% url 'syllabus:faculty_list' %}" class="btn btn-info mt-auto">सिलेबस हेर्नुहोस्</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Announcements Section -->
+<div class="container mb-5" data-aos="fade-up" data-aos-delay="400">
+    <div class="card shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            <h4 class="mb-0"><i class="fas fa-bullhorn me-2"></i>नवीनतम घोषणाहरू</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h6 class="mb-1">NEA परीक्षा तालिका अपडेट गरियो!</h6>
+                    <p class="mb-1 text-muted small">प्रकाशित: २०८२ साउन ५ गते</p>
+                    <p class="mb-0">नेपाल विद्युत प्राधिकरणको आगामी परीक्षा तालिकामा केही परिवर्तनहरू भएका छन्। विस्तृत जानकारीको लागि आधिकारिक वेबसाइट हेर्नुहोस्।</p>
+                </li>
+                <li class="list-group-item">
+                    <h6 class="mb-1">नयाँ नोटहरू थपिए: 'पावर सिस्टम' र 'डाटाबेस म्यानेजमेन्ट'</h6>
+                    <p class="mb-1 text-muted small">प्रकाशित: २०८२ साउन २ गते</p>
+                    <p class="mb-0">कम्प्युटर र इलेक्ट्रिकल इन्जिनियरिङका लागि नयाँ नोटहरू अब उपलब्ध छन्।</p>
+                </li>
+                <li class="list-group-item">
+                    <h6 class="mb-1">क्विजमा नयाँ प्रश्नहरू थपिए!</h6>
+                    <p class="mb-1 text-muted small">प्रकाशित: २०८२ असार २८ गते</p>
+                    <p class="mb-0">तपाईंको अभ्यासलाई अझ प्रभावकारी बनाउन क्विज खण्डमा सयौं नयाँ प्रश्नहरू थपिएका छन्।</p>
+                </li>
+            </ul>
+            <div class="text-end mt-3">
+                <a href="#" class="btn btn-outline-primary btn-sm">सबै घोषणाहरू हेर्नुहोस्</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div class="container mb-5">
+    <div class="text-center py-4 bg-light rounded-3 shadow-sm" data-aos="fade-up" data-aos-delay="500">
+        <h3>कुनै प्रश्न छ?</h3>
+        <p class="lead">हामीलाई सम्पर्क गर्नुहोस् वा हाम्रो बारेमा थप जान्नुहोस्।</p>
+        <a href="{% url 'about' %}" class="btn btn-secondary btn-lg">
+            <i class="fas fa-info-circle me-1"></i> हाम्रो बारेमा
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h3>{{ category.name }} - प्रश्न {{ current_question_index }} / {{ total_questions }}</h3>
+    <div class="card my-4 p-4">
+        <form method="POST">
+            {% csrf_token %}
+            <h5>{{ question.text }}</h5>
+
+            {% for option in question.options.all %}
+                <div class="form-check my-2">
+                    <input class="form-check-input" type="radio" name="answer" value="{{ option.id }}" id="option{{ option.id }}" {% if answered %}disabled{% endif %}>
+                    <label class="form-check-label" for="option{{ option.id }}">
+                        {{ option.text }}
+                    </label>
+                </div>
+            {% endfor %}
+
+            {% if not answered %}
+                <button type="submit" name="submit_answer" class="btn btn-primary mt-3">उत्तर बुझाउनुहोस्</button>
+            {% else %}
+                <button type="submit" name="next_question" class="btn btn-success mt-3">अर्को प्रश्न</button>
+            {% endif %}
+        </form>
+    </div>
+
+    {% if messages %}
+        <div class="mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
