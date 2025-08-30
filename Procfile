@@ -1,1 +1,1 @@
-web: gunicorn my_practice.wsgi
+web: gunicorn mypractice.wsgi
